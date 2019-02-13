@@ -5,7 +5,7 @@ class CreateListings < ActiveRecord::Migration[5.2]
       t.string :photo
       t.text :description
       t.text :location
-      t.text :working-time
+      t.text :workhours
       t.boolean :kitchen
       t.integer :price
 

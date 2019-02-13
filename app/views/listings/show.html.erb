@@ -1,2 +1,16 @@
-<h1>Listings#show</h1>
-<p>Find me in app/views/listings/show.html.erb</p>
+<!-- PAGE DISPLAYING ALL LISTINGS
+ -->
+
+<div class="container text-center">
+    <h2><%= @listing.title %></h2>
+      <h3><%= @listing.description%></h3>
+        <ul style="list-style: none;">
+         <li><%= @listing.workhours%></li>
+        <li> <%= @listing.kitchen %></li>
+      <li><%= @listing.price %></li>
+    </ul>
+</div>
+
+<div class="listing_photo">
+  <img src="<%= @listing.photo%>" alt="">
+</div>

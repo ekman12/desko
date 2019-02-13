@@ -1,13 +1,24 @@
 Rails.application.routes.draw do
-  get 'listings/index'
-  get 'listings/show'
-  get 'listings/new'
-  get 'listings/create'
-  # devise_for :users
+  resources :bookings, only: [ :index, :show ]
+
+  # get 'bookings/index'
+  # get 'bookings/show'
+  # get 'bookings/new'
+  # get 'bookings/create'
+  # get 'bookings/edit'
+  # get 'bookings/update'
+
+  # get 'listings/index'
+  # get 'listings/show'
+  # get 'listings/new'
+  # get 'listings/create'
+  devise_for :users
   root to: 'pages#home'
   # resources :user, only: [ :new, :create ] do
-    resources :listings, except: [ :edit, :update, :destroy ] #do
-  #     resources :bookings, except: [ :destroy ] do
+    resources :listings, except: [ :edit, :update, :destroy ] do
+      resources :bookings, except: [ :destroy ]
+    end
+
   #       resources :reviews, only: [ :show, :index, :new, :create ]
   #     end
   #   end

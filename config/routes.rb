@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # get 'listings/show'
   # get 'listings/new'
   # get 'listings/create'
-  # devise_for :users
+  devise_for :users
   root to: 'pages#home'
   # resources :user, only: [ :new, :create ] do
     resources :listings, except: [ :edit, :update, :destroy ] do

@@ -11,12 +11,12 @@
                 <div class="card-description">
                   <h2><%= listing.title %></h2>
                 </div>
-                <div class="wishlist-link">
-                  <a href="#"><i class="fa fa-heart"></i></a>
-                </div>
               </div>
             <% end %>
               <div class="card-footer">
+                  <div class="wishlist-link">
+                    <a href="#"><i class="fa fa-heart"></i></a>
+                  </div>
                 <p>$<%= listing.price %> usd</p>
                 <p> <%= listing.reviews.count %> Reviews (avg. <%= listing.reviews.average(:rating).to_f.round(1)%>)</p>
               </div>

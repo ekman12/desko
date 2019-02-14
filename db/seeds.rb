@@ -37,12 +37,15 @@ tomek.save!
 
 
 
-    new_review =Review.new(
-      booking_id: new_booking,
-      content: "This place is so cool!",
+puts 'Creating 500 reviews'
+
+500.times do
+    review =Review.new(
+      booking: Booking.all.sample,
+      content: Faker::Restaurant.review,
       rating: (0..5).to_a.sample,
       )
-    new_review.save!
+    review.save!
 
 
 

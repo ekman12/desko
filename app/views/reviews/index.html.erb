@@ -1,2 +1,23 @@
-<h1>Reviews#index</h1>
-<p>Find me in app/views/reviews/index.html.erb</p>
+<!-- THIS PAGE WILL DISPLAY ALL THE REVIEWS TO A GIVEN PROPERTY BY ITS ID
+
+URL: LISTINGS/LISTING:ID/BOOKINGS/BOOKING:ID/REVIEWS -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <h1>Reviews</h1>
+      <ul style="list-style: none" class="list-group">
+        <% @reviews.each do |review| %>
+          <li class="list-group-item">
+            <%= review.content %>
+          </li>
+          <li>
+            <%= review.rating.times do %>
+            <i class="fas fa-star"></i>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

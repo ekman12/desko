@@ -1,10 +1,22 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3 text-center">
+      <div class="form_card">
+        <h1>Bookings#new</h1>
+        <p>Find me in app/views/bookings/new.html.erb</p>
 
 
-<%= simple_form_for @booking, url: listing_bookings_path, method: :post do |f| %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.button :submit %>
-<% end %>
+        <%= simple_form_for @booking, url: listing_bookings_path, method: :post do |f| %>
+          <%= f.input :start_date %>
+          <%= f.input :end_date %>
+          <%= f.button :submit %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 

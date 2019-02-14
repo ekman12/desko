@@ -1,15 +1,23 @@
-<h1>WE NEED TO ADD USER TO THIS VIEW</h1>
-<!-- <p>Find me in app/views/listings/new.html.erb</p> -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3 text-center">
+      <div class="form_card">
+        <h1>Add a Listing!</h1>
+        <!-- <p>Find me in app/views/listings/new.html.erb</p> -->
 
+        <%= simple_form_for @listing do |f| %>
+          <%= f.input :title %>
+          <%= f.input :photo %>
+          <%= f.input :description %>
+          <%= f.input :location %>
+          <%= f.input :workhours %>
+          <%= f.input :kitchen, as: :boolean %>
+          <%= f.input :price %>
+          <%= f.submit "Add Cocktail", class: "btn-ghost" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= simple_form_for @listing do |f| %>
-  <%= f.input :title %>
-  <%= f.input :photo %>
-  <%= f.input :description %>
-  <%= f.input :location %>
-  <%= f.input :workhours %>
-  <%= f.input :kitchen, as: :boolean %>
-  <%= f.input :price %>
-  <%= f.submit "Add Cocktail", class: "btn-ghost" %>
-<% end %>
 

@@ -43,12 +43,12 @@ puts 'Creating 30 bookings'
     booking.save!
 end
 
-puts 'Creating 10 reviews'
+puts 'Creating 500 reviews'
 
-10.times do
+500.times do
     review =Review.new(
-      booking_id: Booking.all.sample.id,
-      content: "This place is so cool!",
+      booking: Booking.all.sample,
+      content: Faker::Restaurant.review,
       rating: (0..5).to_a.sample,
       )
     review.save!

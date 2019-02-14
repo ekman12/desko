@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'reviews/index'
-  get 'reviews/show'
-  get 'reviews/new'
-  get 'reviews/create'
+  # get 'reviews/index'
+  # get 'reviews/show'
+  # get 'reviews/new'
+  # get 'reviews/create'
   resources :bookings, only: [ :index, :show ]
 
   # get 'bookings/index'
@@ -16,14 +16,17 @@ Rails.application.routes.draw do
   # get 'listings/show'
   # get 'listings/new'
   # get 'listings/create'
+  # resources :listings, only [:index]
   devise_for :users
   root to: 'pages#home'
-  # resources :user, only: [ :new, :create ] do
-    resources :listings, except: [ :edit, :update, :destroy ] do
-      resources :bookings, except: [ :destroy ] do
-        resources :reviews, except: [ :edit, :update, :destroy ]
+  resources :user, only: [ :new, :create ]
+  resources :listings, except: [ :edit, :update, :destroy ] do
+    resources :bookings, except: [ :destroy ] do
+      resources :reviews, except: [ :edit, :update, :destroy ]
     end
   end
+
+
 
 
 

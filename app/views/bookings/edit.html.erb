@@ -1,2 +1,10 @@
 <h1>Bookings#edit</h1>
-<p>Find me in app/views/bookings/edit.html.erb</p>
+<p>Where host can edit their booking</p>
+
+<%= simple_form_for @booking, url: listing_booking_path, method: :patch do |f| %>
+  <%= f.input :approved, as: :boolean, input_html: { value: false }, checked_value: true, unchecked_value: false %>
+  <%= f.button :submit %>
+<% end %>
+
+<!-- , url: listing_bookings_path, method: :patch  -->
+

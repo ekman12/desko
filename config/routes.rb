@@ -47,3 +47,6 @@ end
 
 
 # IMPORTANT DEVISE MODEL
+
+# POST   /listings/:listing_id/bookings(.:format)                                                 bookings#create
+

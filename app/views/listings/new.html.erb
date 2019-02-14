@@ -1,2 +1,15 @@
-<h1>Listings#new</h1>
-<p>Find me in app/views/listings/new.html.erb</p>
+<h1>WE NEED TO ADD USER TO THIS VIEW</h1>
+<!-- <p>Find me in app/views/listings/new.html.erb</p> -->
+
+
+<%= simple_form_for @listing do |f| %>
+  <%= f.input :title %>
+  <%= f.input :photo %>
+  <%= f.input :description %>
+  <%= f.input :location %>
+  <%= f.input :workhours %>
+  <%= f.input :kitchen, as: :boolean %>
+  <%= f.input :price %>
+  <%= f.submit "Add Cocktail", class: "btn-ghost" %>
+<% end %>
+

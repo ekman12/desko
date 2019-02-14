@@ -1,9 +1,10 @@
 <h1>Bookings#new</h1>
 <p>Find me in app/views/bookings/new.html.erb</p>
-<%= @listing %>
 
-<%= simple_form_for [@listing, @booking] do |f| %>
+
+<%= simple_form_for @booking, url: listing_bookings_path, method: :post do |f| %>
   <%= f.input :start_date %>
   <%= f.input :end_date %>
   <%= f.button :submit %>
 <% end %>
+

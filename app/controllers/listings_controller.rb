@@ -8,6 +8,7 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
+    raise
   end
 
   def new

@@ -2,23 +2,27 @@
   <div class="card-container">
     <div class="row">
       <div class="cards">
-        <div class="card">
-          <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url('https://picsum.photos/200/300/?random');">
-            <a href="#"></a>
-            <span class="card-category">Shanghai</span>
-            <div class="card-description">
-              <h2><%#= listing.name %>Jad's home</h2>
+      <% @listing.each do |listing| %>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="card">
+            <%= link_to listing_path(listing) do %>
+              <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= listing.photo %>);">
+                <span class="card-category"><%= listing.location %></span>
+                <div class="card-description">
+                  <h2><%= listing.title %></h2>
+                </div>
+                <div class="wishlist-link">
+                  <a href="#"><i class="fa fa-heart"></i></a>
+                </div>
+              </div>
+            <% end %>
+              <div class="card-footer">
+                <p>$<%= listing.price %> usd</p>
+                <p> <%= listing.reviews.count %> Reviews (avg. <%= listing.reviews.average(:rating).to_f.round(1)%>)</p>
+              </div>
             </div>
-            <div class="wishlist-link">
-              <a href="#"><i class="fa fa-heart"></i></a>
-            </div>
-            <!-- <img class="card-user" src="images/jad.png"> -->
-          </div>
-          <div class="card-footer">
-            <p><%#= listing.price %>$55 usd</p>
-            <p><%#= coding.to.be.done %>10 Reviews (avg. 4.5)</p>
-          </div>
         </div>
+      <% end %>
       </div>
     </div>
   </div>

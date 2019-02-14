@@ -11,8 +11,11 @@ tomek = User.new(
 tomek.save!
 
 
-  listing2 = Listing.new(
-      title: "tomek's Place",
+puts 'Creating 50 listings'
+
+50.times do
+    listing =Listing.new(
+      title: "#{User.all.sample.name} Place",
       photo: "https://images.unsplash.com/photo-1515965885361-f1e0095517ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
       description: "This cosy central London flat is close to all the biggest Media agencies. It also has superfast wifi and a great coffee machine",
       location: "Chancery Lane",
@@ -24,6 +27,9 @@ tomek.save!
   listing2.save!
 
 
+puts 'Creating 2000 bookings'
+
+2000.times do
   start_d = (1..15).to_a
   end_d = (15..31).to_a
     new_booking = Booking.new(
@@ -37,9 +43,10 @@ tomek.save!
 
 
 
-puts 'Creating 500 reviews'
 
-500.times do
+puts 'Creating 1000 reviews'
+
+1000.times do
     review =Review.new(
       booking: Booking.all.sample,
       content: Faker::Restaurant.review,

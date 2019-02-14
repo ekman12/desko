@@ -32,3 +32,4 @@ end
 # added
 
 gem 'devise'
+gem 'faker'

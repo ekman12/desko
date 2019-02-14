@@ -12,9 +12,9 @@ puts 'Creating 10 users'
     user.save!
 end
 
-puts 'Creating 100 listings'
+puts 'Creating 50 listings'
 
-100.times do
+50.times do
     listing =Listing.new(
       title: "#{User.all.sample.name} Place",
       photo: "https://images.unsplash.com/photo-1515965885361-f1e0095517ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
@@ -28,9 +28,9 @@ puts 'Creating 100 listings'
     listing.save!
 end
 
-puts 'Creating 30 bookings'
+puts 'Creating 2000 bookings'
 
-30.times do
+2000.times do
   start_d = (1..15).to_a
   end_d = (15..31).to_a
     booking =Booking.new(
@@ -43,9 +43,9 @@ puts 'Creating 30 bookings'
     booking.save!
 end
 
-puts 'Creating 10 reviews'
+puts 'Creating 1000 reviews'
 
-10.times do
+1000.times do
     review =Review.new(
       booking_id: Booking.all.sample.id,
       content: "This place is so cool!",

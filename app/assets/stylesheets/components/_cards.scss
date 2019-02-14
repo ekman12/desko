@@ -1,18 +1,19 @@
-.card-container {
-  max-width: 1000px;
-  margin: 50px auto;
-}
-
 .wrapper-light-grey {
   background-color: rgb(240,240,240);
   padding: 10px;
   display: flex;
 }
+.card-container {
+  max-width: 1000px;
+  margin: 50px auto;
+}
 
 .cards {
   display: flex;
+  flex-wrap: wrap;
   min-width: 250px;
 }
+
 .card {
   flex: 1 1 auto;
   margin: 10px;

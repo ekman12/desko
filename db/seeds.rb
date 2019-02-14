@@ -1,4 +1,5 @@
 require 'faker'
+#changes in case
 # require "json"
 
 # puts 'Creating 10 users'
@@ -24,7 +25,8 @@ puts 'Creating 50 listings'
       price: 14,
       user: tomek
       )
-  listing2.save!
+  listing.save!
+end
 
 
 puts 'Creating 2000 bookings'
@@ -33,14 +35,14 @@ puts 'Creating 2000 bookings'
   start_d = (1..15).to_a
   end_d = (15..31).to_a
     new_booking = Booking.new(
-      listing: new_listing,
+      listing: Listing.all.sample,
       approved: [true, false].sample,
       start_date: Date.new(2019,3,start_d.sample),
       end_date: Date.new(2019,3,end_d.sample),
       user: tomek
       )
     new_booking.save!
-
+end
 
 
 
@@ -53,7 +55,7 @@ puts 'Creating 1000 reviews'
       rating: (0..5).to_a.sample,
       )
     review.save!
-
+end
 
 
 

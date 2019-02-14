@@ -18,7 +18,8 @@ Rails.application.routes.draw do
   # get 'listings/create'
   # resources :listings, only [:index]
   devise_for :users
-  root to: 'pages#home'
+  root to: 'listings#index'
+
   resources :user, only: [ :new, :create ]
   resources :listings, except: [ :edit, :update, :destroy ] do
     resources :bookings, except: [ :destroy ] do

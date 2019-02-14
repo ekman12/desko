@@ -6,6 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+user = User.create(
+  name: "Jed",
+  email: "hello@gmail.com",
+  password: "password"
+)
+
+user.save!
+
 listing = Listing.new(
     title: "Jed's Place",
     photo: "https://images.unsplash.com/photo-1515965885361-f1e0095517ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
@@ -14,6 +22,8 @@ listing = Listing.new(
     workhours: "9-5",
     kitchen: true,
     price: 14,
+    user: user
   )
 
-listing.save
+listing.save!
+

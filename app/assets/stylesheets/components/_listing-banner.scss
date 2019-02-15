@@ -30,6 +30,9 @@
     width: 65%;
     .key-info{
       padding: 15px;
+      .description-text{
+        text-align: left;
+      }
     }
     .reviews{
 
@@ -37,12 +40,13 @@
   }
   .book{
     width: 35%;
+    position: relative;
     .form-container{
       // position: absolute;
       .sticky-card{
-        // position: sticky;
+        // position: fixed;
         position: -webkit-sticky;
-        // top: 0;
+        // margin-top: -600px;
       }
     }
   }

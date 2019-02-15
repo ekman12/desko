@@ -1,16 +1,102 @@
 <!-- PAGE DISPLAYING ALL LISTINGS
  -->
 
-<div class="container text-center">
-    <h2><%= @listing.title %></h2>
-      <h3><%= @listing.description%></h3>
-        <ul style="list-style: none;">
-         <li><%= @listing.workhours%></li>
-        <li> <%= @listing.kitchen %></li>
-      <li><%= @listing.price %></li>
-    </ul>
+<div class="container">
+  <div class="listing-banner">
+    <div class="info text-center">
+      <h1><%= @listing.title.upcase %><br><br></h1>
+      <p>£<%= @listing.price%>/DAY |
+        <% @listing.reviews.average(:rating).to_f.round(0).times do %>
+          <i class="fas fa-star"></i>
+        <% end %>
+        <%= @listing.reviews.count %>
+      </p>
+    </div>
+    <div
+    class="listing-photo" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= @listing.photo %>);width: 100%">
+    </div>
+
+  </div>
 </div>
 
-<div class="listing_photo">
-  <img src="<%= @listing.photo%>" alt="">
+<div class="container">
+
+  <div class="listing-detail">
+
+    <div class="details text-center">
+
+
+      <div class="key-info ">
+        <h3>Description</h3>
+        <p><%= @listing.description%></p>
+        <p><strong>Other Features:</strong></p>
+          <ul style="list-style: none;">
+            <li>You can work here from <%= @listing.workhours%></li>
+            <li>
+              <%= "You are allowed to use the kitchen" if @listing.kitchen%>
+            </li>
+          </ul>
+        </div>
+
+        <div class="reviews">
+          <h3>Reviews</h3>
+
+
+          <% @listing.reviews.each do |review| %>
+          <div class="review_card">
+            <h4>
+            <% review.rating.times do %>
+              <i class="fas fa-star"></i>
+            <% end %>
+            </h4>
+            <p> <%= review.content %><br><br><strong>-<%= review.booking.user.name %></strong></p>
+          </div>
+          <% end %>
+        </div>
+    </div>
+  <div class="book">
+    <div class="form-container">
+      <div class="sticky-card">
+        <div class="form_card text-center">
+          <h1>Book this home</h1>
+            <%= simple_form_for [@listing, @booking] do |f| %>
+            <!-- , url: listing_bookings_path, method: :post  -->
+            <%= f.input :start_date %>
+            <%= f.input :end_date %>
+            <%= f.submit "Book this desk", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
 </div>

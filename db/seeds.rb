@@ -2,6 +2,26 @@ require 'faker'
 #changes in case
 # require "json"
 
+DESK_PHOTOS = [
+'https://images.unsplash.com/photo-1526657782461-9fe13402a841?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+'https://images.unsplash.com/photo-1528557242643-e981f34a4058?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+'https://images.unsplash.com/photo-1521649415036-659258dc424f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+'https://images.unsplash.com/photo-1515965885361-f1e0095517ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+'https://images.unsplash.com/photo-1522152302542-71a8e5172aa1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+'https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+'https://images.unsplash.com/photo-1490135900376-2e86d918a23b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+'https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+'https://images.unsplash.com/photo-1523400396672-db241b5292fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+'https://images.unsplash.com/photo-1463620695885-8a91d87c53d0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+'https://images.unsplash.com/photo-1497681883844-82b4f0a359a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+'https://images.unsplash.com/photo-1483470134942-13bbf4677d84?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+'https://images.unsplash.com/photo-1486946255434-2466348c2166?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+'https://images.unsplash.com/photo-1522684894605-cdcdf44be259?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+'https://images.unsplash.com/photo-1528372444006-1bfc81acab02?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+'https://images.unsplash.com/photo-1547586696-31bfb413bdf1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+]
+
 puts 'Creating 10 users'
 
 10.times do
@@ -15,15 +35,16 @@ end
 
 puts 'Creating 50 listings'
 
+
 50.times do
     listing =Listing.new(
       title: "#{User.all.sample.name} Place",
-      photo: "https://images.unsplash.com/photo-1515965885361-f1e0095517ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
-      description: "This cosy central London flat is close to all the biggest Media agencies. It also has superfast wifi and a great coffee machine",
-      location: "Chancery Lane",
-      workhours: "9-5",
+      photo: DESK_PHOTOS.sample,
+      description: Faker::Books::Lovecraft.paragraph,
+      location: Faker::Address.city,
+      workhours: ["9-5","8-4","10-6","10-4"].sample,
       kitchen: [true, false].sample,
-      price: 14,
+      price: (10..40).to_a.sample,
       user: User.all.sample
       )
   listing.save!
@@ -47,9 +68,9 @@ end
 
 
 
-puts 'Creating 50 reviews'
+puts 'Creating 1000 reviews'
 
-25.times do
+1000.times do
     review =Review.new(
       booking: Booking.all.sample,
       content: Faker::Restaurant.review,

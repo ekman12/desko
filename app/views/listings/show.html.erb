@@ -12,9 +12,11 @@
         <%= @listing.reviews.count %>
       </p>
     </div>
-    <div
-    class="listing-photo" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= @listing.photo %>);width: 100%">
+    <div class="listing-photo">
+      <img src="<%=@listing.photo %>" alt="picture of desk">
     </div>
+
+    <!-- style="object-fit: scale-down;background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= @listing.photo %>);"> -->
 
   </div>
 </div>

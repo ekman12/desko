@@ -18,12 +18,15 @@
                 <div class="wishlist-link">
                   <a href="#"><i class="fa fa-heart"></i></a>
                 </div>
-                <p>Booking status
+                <p>
+                  Booking status
                 <% if booking.approved == true %>
                   <%= "Accepted" %>
+                <%= link_to "new review", new_listing_booking_review_path(booking.id, booking.listing.id), class: "btn btn-primary btn-sm" %>
                 <% else %>
                   <%= "Pending" %>
-                <% end %></p>
+                <% end %>
+                </p>
                 <p> From: <%= booking.start_date %> To: <%= booking.end_date %></p>
             </div>
           </div>

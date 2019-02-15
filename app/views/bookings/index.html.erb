@@ -37,7 +37,7 @@
     <div class="row">
       <h2>Requests for my listings</h2>
       <div class="cards">
-      <% @bookings.where(listing: current_user).each do |booking| %>
+      <% @listings.where(user: current_user).each do |booking| %>
         <div class="col-xs-12 col-sm-6 col-md-4">
           <div class="card">
           <%= link_to listing_path(booking.listing) do %>

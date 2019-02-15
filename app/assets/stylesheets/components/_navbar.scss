@@ -4,6 +4,11 @@
   justify-content: space-between;
   background: white;
   padding: 16px 24px;
+  justify-content: center;
+   height: 70px;
+  img {
+  width: 50px;
+  }
 }
 
 .navbar-desko .brand {
@@ -22,4 +27,10 @@
 
 .navbar-desko .navbar-desko-actions .navbar-desko-link:hover {
   color: #151515;
+}
+
+.my-navbar-container {
+  width: 90vw;
+  display: flex;
+  justify-content: space-between;
 }

@@ -1,13 +1,8 @@
 <div class="navbar-desko">
-    <a href="#">
-      <%= link_to root_path do %>
-        <%= image_tag('DESKO.jpg') %>
-      <% end %>
-    </a>
   <div class="navbar-desko-actions d-none d-sm-flex">
-   <% if user_signed_in? %>
+    <% if user_signed_in? %>
       <div class="my-navbar-container">
-        Logged in as <%= current_user.name %>
+        Logged in as <%= current_user.email %>
 
           <div class="navbar-right">
             <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-desko-link'  %>
@@ -18,6 +13,7 @@
       <% else %>
          <%= link_to "Login", new_user_session_path, :class => 'navbar-desko-link'  %>
          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-desko-link'%>
-      <% end %>
+    <% end %>
   </div>
 </div>
+

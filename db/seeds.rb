@@ -42,7 +42,7 @@ puts 'Creating 50 listings'
       photo: DESK_PHOTOS.sample,
       description: Faker::Books::Lovecraft.paragraph,
       location: Faker::Address.city,
-      workhours: ["9-5","8-4","10-6","10-4"],
+      workhours: ["9-5","8-4","10-6","10-4"].sample,
       kitchen: [true, false].sample,
       price: (10..40).to_a.sample,
       user: User.all.sample

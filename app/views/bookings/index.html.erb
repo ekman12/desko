@@ -1,2 +1,68 @@
-<h1>Bookings#index</h1>
-<p>Find me in app/views/bookings/index.html.erb</p>
+<div class="wrapper-light-grey">
+  <div class="card-container">
+    <div class="row">
+      <h2>My next Deskos</h2>
+      <div class="cards">
+      <% @bookings.where(user: current_user).each do |booking| %>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="card">
+          <%= link_to listing_path(booking.listing) do %>
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= booking.listing.photo %>);">
+              <span class="card-category"><%= booking.listing.location %></span>
+              <div class="card-description">
+                <h2><%= booking.listing.title %></h2>
+              </div>
+            </div>
+          <% end %>
+            <div class="card-footer">
+                <div class="wishlist-link">
+                  <a href="#"><i class="fa fa-heart"></i></a>
+                </div>
+                <p>Booking status
+                <% if booking.approved == true %>
+                  <%= "Accepted" %>
+                <% else %>
+                  <%= "Pending" %>
+                <% end %></p>
+                <p> From: <%= booking.start_date %> To: <%= booking.end_date %></p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <h2>Requests for my listings</h2>
+      <div class="cards">
+      <% @bookings.where(listing: current_user).each do |booking| %>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="card">
+          <%= link_to listing_path(booking.listing) do %>
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= booking.listing.photo %>);">
+              <span class="card-category"><%= booking.listing.location %></span>
+              <div class="card-description">
+                <h2><%= booking.listing.title %></h2>
+              </div>
+            </div>
+          <% end %>
+            <div class="card-footer">
+                <div class="wishlist-link">
+                  <a href="#"><i class="fa fa-heart"></i></a>
+                </div>
+                <p>Booking status
+                <% if booking.approved == true %>
+                  <%= "Accepted" %>
+                <% else %>
+                  <%= link_to "Pending", edit_listing_booking_path(booking.listing, booking) %>
+                <% end %></p>
+                <p> From: <%= booking.start_date %> To: <%= booking.end_date %></p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

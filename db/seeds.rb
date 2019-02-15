@@ -2,15 +2,16 @@ require 'faker'
 #changes in case
 # require "json"
 
-# puts 'Creating 10 users'
+puts 'Creating 10 users'
 
-tomek = User.new(
-    name: Faker::Name.unique.name,
-    email: Faker::Internet.unique.email,
-    password: "123456"
-  )
-tomek.save!
-
+10.times do
+  user = User.new(
+      name: Faker::Name.unique.name,
+      email: Faker::Internet.unique.email,
+      password: "123456"
+    )
+  user.save!
+end
 
 puts 'Creating 50 listings'
 
@@ -23,32 +24,32 @@ puts 'Creating 50 listings'
       workhours: "9-5",
       kitchen: [true, false].sample,
       price: 14,
-      user: tomek
+      user: User.all.sample
       )
   listing.save!
 end
 
 
-puts 'Creating 2000 bookings'
+puts 'Creating 100 bookings'
 
-2000.times do
+50.times do
   start_d = (1..15).to_a
   end_d = (15..31).to_a
     new_booking = Booking.new(
       listing: Listing.all.sample,
-      approved: [true, false].sample,
+      approved: false,
       start_date: Date.new(2019,3,start_d.sample),
       end_date: Date.new(2019,3,end_d.sample),
-      user: tomek
+      user: User.all.sample
       )
     new_booking.save!
 end
 
 
 
-puts 'Creating 1000 reviews'
+puts 'Creating 50 reviews'
 
-1000.times do
+25.times do
     review =Review.new(
       booking: Booking.all.sample,
       content: Faker::Restaurant.review,

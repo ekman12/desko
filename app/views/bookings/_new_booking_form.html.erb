@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3 text-center">
+      <div class="form_card">
+        <h1>Book this home</h1>
+        <p>Find me in app/views/bookings/new.html.erb</p>
+
+
+        <%= simple_form_for @booking, url: listing_bookings_path, method: :post do |f| %>
+          <%= f.input :start_date %>
+          <%= f.input :end_date %>
+          <%= f.submit "Book this desk", class: "btn btn-primary" %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

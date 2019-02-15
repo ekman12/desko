@@ -22,7 +22,7 @@
                   Booking status
                 <% if booking.approved == true %>
                   <%= "Accepted" %>
-                <%= link_to "new review", new_listing_booking_review_path(booking.listing, booking), class: "btn btn-primary btn-sm" %>
+                <%= link_to "new review", new_listing_booking_review_path(booking.id, booking.listing.id), class: "btn btn-primary btn-sm" %>
                 <% else %>
                   <%= "Pending" %>
                 <% end %>

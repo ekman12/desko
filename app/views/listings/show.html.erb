@@ -13,8 +13,9 @@
       </p>
     </div>
     <div class="listing-photo">
-      <img src="<%=@listing.photo %>" alt="picture of desk">
+      <img src="<%=cl_image_path(@listing.photo, width: 1600, crop: :fill) %>" alt="picture of desk">
     </div>
+
 
     <!-- style="object-fit: scale-down;background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= @listing.photo %>);"> -->
 

@@ -7,7 +7,7 @@
         <div class="col-xs-12 col-sm-4 col-md-4">
           <div class="card">
           <%= link_to listing_path(booking.listing) do %>
-            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= booking.listing.photo %>);">
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= cl_image_path(booking.listing.photo, width: 900, crop: :thumb) %>);">
               <span class="card-category"><%= booking.listing.location %></span>
               <div class="card-description">
                 <h2><%= booking.listing.title %></h2>
@@ -48,7 +48,7 @@
           <div class="col-xs-12 col-sm-6 col-md-4">
             <div class="card">
             <%= link_to listing_path(listing) do %>
-              <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= listing.photo %>);">
+              <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= cl_image_path(listing.photo, width: 900, crop: :thumb) %>);">
                 <span class="card-category"><%= listing.location %></span>
                 <div class="card-description">
                   <h2><%= listing.title %></h2>

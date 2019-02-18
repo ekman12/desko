@@ -17,6 +17,7 @@ class ReviewsController < ApplicationController
     @listing = Listing.find(params[:listing_id])
     @review = Review.new(review_params)
     @review.booking = @booking
+    raise
     if @review.save
       redirect_to listing_path(@listing)
     else
@@ -26,7 +27,7 @@ class ReviewsController < ApplicationController
 
   private
 
-   def review_params
+  def review_params
     params.require(:review).permit(:booking_id, :content, :rating)
   end
 end

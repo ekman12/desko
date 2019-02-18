@@ -1,6 +1,10 @@
 class WishlistItemsController < ApplicationController
   def index
-    @wishlists = WishlistItem.all
+    wishlists = WishlistItem.where(user_id: current_user.id)
+    @listing = []
+    wishlists.each { |item| @listing << item.listing }
+    @listing
+    # raise
   end
 
   def new

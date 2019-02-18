@@ -12,6 +12,9 @@
           <div class="navbar-right">
             <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-desko-link'  %>
             <%= link_to "Add a listing", new_listing_path, :class => 'navbar-desko-link' %>  <%= link_to "View your bookings", bookings_path, :class => 'navbar-desko-link' %>
+            <%= link_to(wishlist_items_index_path) do  %>
+              <i class="fa fa-heart navbar-desko-link"></i>
+            <% end %>
           </div>
       </div>
 

@@ -4,7 +4,7 @@
       <h2>My next Deskos</h2>
       <div class="cards">
       <% @bookings.where(user: current_user).each do |booking| %>
-        <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="col-xs-12 col-sm-4 col-md-4">
           <div class="card">
           <%= link_to listing_path(booking.listing) do %>
             <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= booking.listing.photo %>);">
@@ -20,11 +20,15 @@
                 </div>
                 <p>
                   Booking status
-                <% if booking.approved == true %>
+                <% if booking.approved == "confirmed"  %>
                   <%= "Accepted" %>
-                <%= link_to "new review", new_listing_booking_review_path(booking.listing, booking), class: "btn btn-primary btn-sm" %>
+                  <% if booking.review.nil?  %>
+                    <%= link_to "New review", new_listing_booking_review_path(booking.listing, booking), class: "btn btn-primary btn-sm" %>
+                  <% else %>
+                    <%= link_to "View my review", listing_path(booking.listing) %>
+                  <% end %>
                 <% else %>
-                  <%= "Pending" %>
+                  <%= booking.approved.titlecase %>
                 <% end %>
                 </p>
                 <p> From: <%= booking.start_date %> To: <%= booking.end_date %></p>
@@ -36,38 +40,40 @@
     </div>
     <div class="row">
       <h2>Requests for my listings</h2>
-      <div class="cards">
-      <% @listings.where(user: current_user).each do |listing| %>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="card">
-          <%= link_to listing_path(listing) do %>
-            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= listing.photo %>);">
-              <span class="card-category"><%= listing.location %></span>
-              <div class="card-description">
-                <h2><%= listing.title %></h2>
-              </div>
-            </div>
-          <% end %>
-            <div class="card-footer">
-                <div class="wishlist-link">
-                  <a href="#"><i class="fa fa-heart"></i></a>
+      <% if current_user.bookings.records == [] %>
+        <%= "No current bookings for your listings" %>
+      <% else %>
+        <div class="cards">
+        <% @listings.where(user: current_user).each do |listing| %>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="card">
+            <%= link_to listing_path(listing) do %>
+              <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= listing.photo %>);">
+                <span class="card-category"><%= listing.location %></span>
+                <div class="card-description">
+                  <h2><%= listing.title %></h2>
                 </div>
-                <p>Booking status
-                  <% listing.bookings.each do |booking| %>
-                <% if booking.approved == true %>
-                  <%= "Accepted" %>
-                <% else %>
-                  <%= link_to "Pending", edit_listing_booking_path(booking.listing, booking) %>
-                <% end %></p>
-                <p> From: <%= booking.start_date %> To: <%= booking.end_date %></p>
+              </div>
+            <% end %>
+              <div class="card-footer">
+                  <div class="wishlist-link">
+                    <a href="#"><i class="fa fa-heart"></i></a>
+                  </div>
+                  <p>Booking status
+                    <% listing.bookings.each do |booking| %>
+                  <% if booking.approved == "pending" %>
+                    <%= link_to "Pending", edit_listing_booking_path(booking.listing, booking) %>
+                  <% else %>
+                    <%= booking.approved.titlecase %>
+                  <% end %></p>
+                  <p> From: <%= booking.start_date %> To: <%= booking.end_date %></p>
+              </div>
+                  <% end %>
             </div>
-                <% end %>
           </div>
-        </div>
         <% end %>
       </div>
+    <% end %>
     </div>
   </div>
 </div>
-
-

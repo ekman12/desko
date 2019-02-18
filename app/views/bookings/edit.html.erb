@@ -5,7 +5,7 @@
         <h1>Approve booking</h1>
         <br>
         <%= simple_form_for @booking, url: listing_booking_path, method: :patch do |f| %>
-          <%= f.input :approved, as: :radio_buttons, collection: [[true, 'Approve'], [false, 'Reject']], label: "", label_method: :second, value_method: :first %>
+          <%= f.input :approved, as: :radio_buttons, collection: [['confirmed', 'Approve'], ['rejected', 'Reject']], label: "", label_method: :second, value_method: :first %>
           <%#= f.input :approved, as: :boolean, input_html: { value: false }, checked_value: true, unchecked_value: false %>
           <br>
           <%= f.submit "Confirm ", class: "btn btn-primary" %>

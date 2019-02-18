@@ -53,31 +53,29 @@ end
 
 puts 'Creating 100 bookings'
 
-50.times do
+100.times do
   start_d = (1..15).to_a
   end_d = (15..31).to_a
     new_booking = Booking.new(
       listing: Listing.all.sample,
-      approved: false,
+      approved: ["confirmed", "rejected", "pending"].sample,
       start_date: Date.new(2019,3,start_d.sample),
       end_date: Date.new(2019,3,end_d.sample),
       user: User.all.sample
       )
     new_booking.save!
+      if new_booking.approved == "confirmed"
+          review =Review.new(
+            booking: new_booking,
+            content: Faker::Restaurant.review,
+            rating: (0..5).to_a.sample,
+            )
+          review.save!
+      end
 end
 
 
 
-puts 'Creating 1000 reviews'
-
-1000.times do
-    review =Review.new(
-      booking: Booking.all.sample,
-      content: Faker::Restaurant.review,
-      rating: (0..5).to_a.sample,
-      )
-    review.save!
-end
 
 
 

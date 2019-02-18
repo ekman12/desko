@@ -11,6 +11,11 @@
         <% end %>
         <%= @listing.reviews.count %>
       </p>
+    <h1>
+      <%= link_to(listing_wishlist_items_path(@listing), remote: true, method: :post) do %>
+        <i class="fa fa-heart"></i>
+      <% end %>
+    </h1>
     </div>
     <div class="listing-photo">
       <img src="<%=cl_image_path(@listing.photo, width: 1600, crop: :fill) %>" alt="picture of desk">
@@ -23,11 +28,6 @@
 </div>
 
 
-<div class="form_card text-center">
-    <%= simple_form_for [@listing, @wishlist_item] do |f| %>
-    <%= f.submit "Add to wishlist" %>
-  <% end %>
-</div>
 
 <div class="container">
 

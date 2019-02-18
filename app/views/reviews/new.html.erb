@@ -3,12 +3,12 @@
     <div class="col-sm-6 col-sm-offset-3 text-center">
       <div class="form_card">
         <h3>Add a review for <%= @booking.listing.title %></h3>
-
         <%= simple_form_for @review, url: listing_booking_reviews_path, method: :post do |f| %>
           <%= f.input :content %>
-          <%= f.collection_radio_buttons :rating, [[5], [4], [3], [2], [1]], :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
-          <%= b.radio_button + b.label {''} %>
-        <% end %>
+          <%= f.collection_radio_buttons :rating, [[1], [2], [3], [4], [5]], :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
+            <%= b.radio_button + b.label {''} %>
+          <% end %>
+        <br>
         <br>
           <%= f.submit "Add Review", class: "btn btn-primary" %>
         <% end %>
@@ -16,3 +16,6 @@
     </div>
   </div>
 </div>
+
+<!-- Had issues adding stars to form. Not a priority. Have left it.  -->
+<!-- <input class="star" type="checkbox" title="bookmark page"><br/><br/> -->

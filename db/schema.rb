@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2019_02_14_041542) do
 
   create_table "bookings", force: :cascade do |t|
     t.bigint "listing_id"
-    t.boolean "approved"
+    t.string "approved", default: "pending"
     t.date "start_date"
     t.date "end_date"
     t.bigint "user_id"

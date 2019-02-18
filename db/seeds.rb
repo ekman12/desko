@@ -71,5 +71,3 @@ puts 'Creating 100 bookings'
           review.save!
       end
 end
-
-

@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/stympy/faker.git
-  revision: 07290fe0f4fc6a305d08fd1e8ef265ea4127dca7
+  revision: bca9f62ae33a642b999db1677e4eb295fb3d29b9
   branch: master
   specs:
     faker (1.9.3)
@@ -58,7 +58,7 @@ GEM
     bindex (0.5.0)
     bootsnap (1.4.0)
       msgpack (~> 1.0)
-    bootstrap-sass (3.4.0)
+    bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
     builder (3.2.3)

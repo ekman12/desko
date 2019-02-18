@@ -1,4 +1,6 @@
 class WishlistItemsController < ApplicationController
+  skip_before_action :authenticate_user!
+
   def index
     wishlists = WishlistItem.where(user_id: current_user.id)
     @listing = []

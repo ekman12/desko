@@ -5,24 +5,30 @@ class WishlistItemsController < ApplicationController
 
   def new
     @wishlist = WishlistItem.new
-    raise
   end
 
-
   def create
-    @wishlist = WishlistItem.new
-    @wishlist.user = current_user
     @listing = Listing.find(params[:listing_id])
-    @wishlist.listing = @listing
-    if @wishlist.save
-      redirect_to listing_path(@listing)
+    @wishlist_check = WishlistItem.where(listing_id: @listing.id, user_id: current_user.id)
+    if @wishlist_check.empty?
+      @wishlist = WishlistItem.new
+      @wishlist.user = current_user
+      @wishlist.listing = @listing
+      if @wishlist.save
+        redirect_to listing_path(@listing)
+      else
+        render :new
+      end
     else
-      render :new
+      @wishlist_check.destroy_all
+      redirect_to listing_path(@listing)
     end
   end
 
   def destroy
+    raise
+    @wishlist = WishlistItem.find(params[:id])
+    @wishlist.destroy
   end
-
 
 end

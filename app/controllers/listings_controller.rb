@@ -11,6 +11,7 @@ class ListingsController < ApplicationController
     @booking = Booking.new
     @user = current_user
     @wishlist_item = WishlistItem.new
+    @wishlist_check = WishlistItem.where(listing_id: @listing.id, user_id: current_user.id)
     # raise
   end
 

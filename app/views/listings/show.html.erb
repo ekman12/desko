@@ -1,3 +1,4 @@
+<% wishlistclass = "wishlist-heart-clicked" unless @wishlist_check.empty? %>
 <div class="container">
   <div class="listing-banner">
     <div class="info text-center">
@@ -9,8 +10,9 @@
         <%= @listing.reviews.count %>
       </p>
     <h1>
-      <%= link_to(listing_wishlist_items_path(@listing), remote: true, method: :post) do %>
-        <i class="fa fa-heart wishlist-heart" id="wishlist-heart"></i>
+      <%= link_to(listing_wishlist_items_path(@listing), method: :post) do %>
+        <i class="fa fa-heart wishlist-heart <%= wishlistclass %>" id="wishlist-heart"></i>
+        <!-- <i class="fa fa-heart"></i> -->
       <% end %>
     </h1>
     </div>
@@ -19,7 +21,6 @@
     </div>
   </div>
 </div>
-
 <div class="container">
   <div class="listing-detail">
     <div class="details text-center">

@@ -33,3 +33,4 @@ end
 
 gem 'devise'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+gem "geocoder"

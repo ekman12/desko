@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :user, only: [ :new, :create ]
   resources :listings, except: [ :edit, :update, :destroy ] do
+    resources :wishlist_items, only: [ :new, :create ]
     resources :bookings, except: [ :destroy ] do
       resources :reviews, except: [ :edit, :update, :destroy ]
     end

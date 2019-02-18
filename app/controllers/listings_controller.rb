@@ -9,11 +9,13 @@ class ListingsController < ApplicationController
   def show
     @listing = Listing.find(params[:id])
     @booking = Booking.new
+    @user = current_user
+    @wishlist_item = WishlistItem.new
+    # raise
   end
 
   def new
     @listing = Listing.new
-    # raise
   end
 
   def create

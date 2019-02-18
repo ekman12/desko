@@ -9,7 +9,7 @@ class ListingsController < ApplicationController
       {
         lng: listing.longitude,
         lat: listing.latitude,
-        # infoWindow: render_to_string(partial: "infowindow", locals: { listing: listing })
+        infoWindow: render_to_string(partial: "infowindow", locals: { listing: listing })
       }
     end
   end

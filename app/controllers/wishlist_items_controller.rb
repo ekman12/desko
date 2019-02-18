@@ -4,7 +4,6 @@ class WishlistItemsController < ApplicationController
     @listing = []
     wishlists.each { |item| @listing << item.listing }
     @listing
-    # raise
   end
 
   def new

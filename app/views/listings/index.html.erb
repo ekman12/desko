@@ -14,9 +14,13 @@
               </div>
             <% end %>
               <div class="card-footer">
+
                   <div class="wishlist-link">
-                    <a href="#"><i class="fa fa-heart"></i></a>
+                    <%= link_to(listing_wishlist_items_path(listing.id), method: :post) do %>
+                      <i class="fa fa-heart wishlist-heart " id="wishlist-heart"></i>
+                    <% end %>
                   </div>
+
                 <p>$<%= listing.price %> usd</p>
                 <p> <%= listing.reviews.count %> Reviews (avg. <%= listing.reviews.average(:rating).to_f.round(1)%>)</p>
               </div>

@@ -2,6 +2,9 @@ class ListingsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    if params[:query].present?
+      @listing = Listing.search_by_location(params[:query])
+    else
     @listing = Listing.all
     @listing_for_marker = Listing.where.not(latitude: nil, longitude: nil)
 
@@ -12,6 +15,7 @@ class ListingsController < ApplicationController
         infoWindow: render_to_string(partial: "infowindow", locals: { listing: listing })
       }
     end
+  end
   end
 
   def show

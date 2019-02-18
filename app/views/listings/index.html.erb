@@ -1,6 +1,14 @@
 <div class="wrapper-light-grey">
   <div class="card-container">
+
     <div class="row">
+      <%= form_tag listings_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Try \"London\""
+        %>
+      <% end %>
       <div class="cards">
       <% @listing.each do |listing| %>
           <div class="col-xs-12 col-sm-6 col-md-4">

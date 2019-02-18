@@ -39,7 +39,7 @@ puts 'Creating 50 listings'
 50.times do
     listing =Listing.new(
       title: "#{User.all.sample.name} Place",
-      photo: DESK_PHOTOS.sample,
+      # photo: DESK_PHOTOS.sample,
       description: Faker::Books::Lovecraft.paragraph,
       location: Faker::Address.city,
       workhours: ["9-5","8-4","10-6","10-4"].sample,
@@ -47,6 +47,7 @@ puts 'Creating 50 listings'
       price: (10..40).to_a.sample,
       user: User.all.sample
       )
+  listing.remote_photo_url = DESK_PHOTOS.sample
   listing.save!
 end
 

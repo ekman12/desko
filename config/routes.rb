@@ -17,8 +17,14 @@ Rails.application.routes.draw do
   # get 'listings/new'
   # get 'listings/create'
   # resources :listings, only [:index]
-  devise_for :users
   root to: 'listings#index'
+
+ devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
+# devise_scope :user do
+#   get 'sign_in', :to => 'devise/sessions#new', :as => :new_user_session
+#   get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+# end
 
   resources :user, only: [ :new, :create ]
   resources :listings, except: [ :edit, :update, :destroy ] do

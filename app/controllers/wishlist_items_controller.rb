@@ -20,13 +20,21 @@ class WishlistItemsController < ApplicationController
       @wishlist.user = current_user
       @wishlist.listing = @listing
       if @wishlist.save
-        redirect_to listing_path(@listing)
+        respond_to do |format|
+          # raise
+          format.html { redirect_to listing_path(@listing) }
+          format.js # <-- will render `app/views/reviews/create.js.erb`
+        end
       else
         render :new
       end
     else
       @wishlist_check.destroy_all
-      redirect_to listing_path(@listing)
+      respond_to do |format|
+        # raise
+        format.html { redirect_to listing_path(@listing) }
+        format.js # <-- will render `app/views/reviews/create.js.erb`
+      end
     end
   end
 

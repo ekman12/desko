@@ -7,16 +7,16 @@ class ListingsController < ApplicationController
     else
     @listing = Listing.all
     @listing_for_marker = Listing.where.not(latitude: nil, longitude: nil)
-
-    @markers = @listing_for_marker.map do |listing|
-      {
-        lng: listing.longitude,
-        lat: listing.latitude,
-        infoWindow: render_to_string(partial: "infowindow", locals: { listing: listing })
-      }
+      @markers = @listing_for_marker.map do |listing|
+        {
+          lng: listing.longitude,
+          lat: listing.latitude,
+          infoWindow: render_to_string(partial: "infowindow", locals: { listing: listing })
+        }
+      end
     end
   end
-  end
+
 
   def show
     @listing = Listing.find(params[:id])

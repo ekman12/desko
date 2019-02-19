@@ -38,4 +38,5 @@ class User < ApplicationRecord
       end
     end
   end
+  has_many :wishlist_items
 end

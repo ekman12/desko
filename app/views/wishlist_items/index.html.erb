@@ -1,14 +1,6 @@
 <div class="wrapper-light-grey">
   <div class="card-container">
-
     <div class="row">
-      <%= form_tag listings_path, method: :get do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Try \"London\""
-        %>
-      <% end %>
       <div class="cards">
       <% @listing.each do |listing| %>
           <div class="col-xs-12 col-sm-6 col-md-4">
@@ -22,14 +14,9 @@
               </div>
             <% end %>
               <div class="card-footer">
-                <% if !current_user.nil? %>
                   <div class="wishlist-link">
-                    <%= link_to(listing_wishlist_items_path(listing.id), method: :post) do %>
-                      <i class="fa fa-heart wishlist-heart " id="wishlist-heart"></i>
-                    <% end %>
+                    <a href="#"><i class="fa fa-heart"></i></a>
                   </div>
-                <% end %>
-
                 <p>$<%= listing.price %> usd</p>
                 <p> <%= listing.reviews.count %> Reviews (avg. <%= listing.reviews.average(:rating).to_f.round(1)%>)</p>
               </div>
@@ -40,10 +27,4 @@
     </div>
   </div>
 </div>
-<div
-  id="map"
-  style="width: 100%;
-  height: 600px;"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
+

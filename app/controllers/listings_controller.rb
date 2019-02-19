@@ -2,6 +2,9 @@ class ListingsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    if params[:query].present?
+      @listing = Listing.search_by_location(params[:query])
+    else
     @listing = Listing.all
     @listing_for_marker = Listing.where.not(latitude: nil, longitude: nil)
 
@@ -13,15 +16,19 @@ class ListingsController < ApplicationController
       }
     end
   end
+  end
 
   def show
     @listing = Listing.find(params[:id])
     @booking = Booking.new
+    @user = current_user
+    @wishlist_item = WishlistItem.new
+    @wishlist_check = WishlistItem.where(listing_id: @listing.id, user_id: current_user.id) unless current_user.nil?
+    # raise
   end
 
   def new
     @listing = Listing.new
-    # raise
   end
 
   def create

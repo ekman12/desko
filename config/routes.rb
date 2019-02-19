@@ -1,22 +1,11 @@
 Rails.application.routes.draw do
-  # get 'reviews/index'
-  # get 'reviews/show'
-  # get 'reviews/new'
-  # get 'reviews/create'
+  get 'wishlist_items/index'
+  get 'wishlist_items/new'
+  get 'wishlist_items/create'
+  get 'wishlist_items/destroy'
+
   resources :bookings, only: [ :index, :show ]
-
-  # get 'bookings/index'
-  # get 'bookings/show'
-  # get 'bookings/new'
-  # get 'bookings/create'
-  # get 'bookings/edit'
-  # get 'bookings/update'
-
-  # get 'listings/index'
-  # get 'listings/show'
-  # get 'listings/new'
-  # get 'listings/create'
-  # resources :listings, only [:index]
+  devise_for :users
   root to: 'listings#index'
 
  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
@@ -32,6 +21,7 @@ Rails.application.routes.draw do
 
   resources :user, only: [ :new, :create ]
   resources :listings, except: [ :edit, :update, :destroy ] do
+    resources :wishlist_items, only: [ :new, :create ]
     resources :bookings, except: [ :destroy ] do
       resources :reviews, except: [ :edit, :update, :destroy ]
     end

@@ -29,14 +29,8 @@
                     <%= link_to(listing_wishlist_items_path(listing.id), method: :post, remote: true) do %>
                       <i class="fa fa-heart wishlist-heart <%= wishlistclass %>" data-listing-id="<%= listing.id %>"></i>
                     <% end %>
-
-
-
-
-
                   </div>
                 <% end %>
-
                 <p>$<%= listing.price %> usd</p>
                 <p> <%= listing.reviews.count %> Reviews (avg. <%= listing.reviews.average(:rating).to_f.round(1)%>)</p>
               </div>
@@ -46,11 +40,9 @@
       </div>
     </div>
   </div>
-</div>
 <div
   id="map"
-  style="width: 100%;
-  height: 600px;"
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
+</div>

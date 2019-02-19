@@ -2,16 +2,23 @@
   background-color: rgb(240,240,240);
   padding: 10px;
   display: flex;
+  #map {
+    height: calc(100vh - 65px);
+    position: sticky !important;
+    flex: 0 1 450px;
+    top: 0 !important;
+  }
 }
 .card-container {
-  max-width: 1000px;
+  width: 800px;
   margin: 50px auto;
+  display: flex;
 }
 
 .cards {
   display: flex;
   flex-wrap: wrap;
-  min-width: 250px;
+
 }
 
 .card {

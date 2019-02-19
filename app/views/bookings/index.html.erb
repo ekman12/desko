@@ -40,9 +40,7 @@
     </div>
     <div class="row">
       <h2>Requests for my listings</h2>
-      <% if current_user.bookings.records == [] %>
-        <%= "No current bookings for your listings" %>
-      <% else %>
+
         <div class="cards">
         <% @listings.where(user: current_user).each do |listing| %>
           <div class="col-xs-12 col-sm-6 col-md-4">
@@ -73,7 +71,6 @@
           </div>
         <% end %>
       </div>
-    <% end %>
     </div>
   </div>
 </div>

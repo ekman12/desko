@@ -11,10 +11,8 @@ const initAutocompleteAddress = () => {
 const initAutocompleteCity = () => {
   const addressInput = document.getElementById('query');
   if (addressInput) {
-    places({
-      container: addressInput,
-      type: 'city'
-     });
+    places({container: addressInput,
+            type: 'city'});
   }
 };
 

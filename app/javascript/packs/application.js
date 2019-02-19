@@ -1,6 +1,5 @@
+
 import "bootstrap";
-import { clickWishlistHeart } from '../plugins/wishlist_heart';
-clickWishlistHeart();
 
 import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the stylesheet_pack_tag in the layout!
 
@@ -11,4 +10,5 @@ import { initAutocompleteAddress, initAutocompleteCity } from '../plugins/init_a
 initAutocompleteAddress();
 initAutocompleteCity();
 
-
+import { clickWishlistHeart } from '../plugins/wishlist_heart';
+clickWishlistHeart();

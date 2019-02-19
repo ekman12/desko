@@ -20,6 +20,10 @@ def redirect_back_or_default(default)
   redirect_to(session[:return_to] || default)
 end
 
+ def new_session_path(scope)
+    new_user_session_path
+  end
+
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
@@ -27,7 +31,7 @@ end
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: [:username])
   end
-  
+
   private
     # Its important that the location is NOT stored if:
     # - The request method is not GET (non idempotent)

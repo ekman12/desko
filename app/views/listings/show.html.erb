@@ -1,6 +1,3 @@
-<!-- PAGE DISPLAYING ALL LISTINGS
- -->
-
 <div class="container">
   <div class="listing-banner">
     <div class="info text-center">
@@ -11,24 +8,24 @@
         <% end %>
         <%= @listing.reviews.count %>
       </p>
+    <h1>
+      <% if !current_user.nil? %>
+        <%= link_to(listing_wishlist_items_path(@listing), method: :post) do %>
+          <% wishlistclass = "wishlist-heart-clicked" unless @wishlist_check.empty? %>
+          <i class="fa fa-heart wishlist-heart <%= wishlistclass %>" id="wishlist-heart"></i>
+          <!-- <i class="fa fa-heart"></i> -->
+        <% end %>
+      <% end %>
+    </h1>
     </div>
     <div class="listing-photo">
       <img src="<%=cl_image_path(@listing.photo, width: 1600, crop: :fill) %>" alt="picture of desk">
     </div>
-
-
-    <!-- style="object-fit: scale-down;background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= @listing.photo %>);"> -->
-
   </div>
 </div>
-
 <div class="container">
-
   <div class="listing-detail">
-
     <div class="details text-center">
-
-
       <div class="key-info ">
         <h3>Description</h3>
         <p><strong>Hosted by <%= @listing.user.name %></strong></p>
@@ -44,8 +41,6 @@
 
         <div class="reviews">
           <h3>Reviews</h3>
-
-
           <% @listing.reviews.each do |review| %>
           <div class="review_card">
             <h4>
@@ -57,7 +52,9 @@
           </div>
           <% end %>
         </div>
+
     </div>
+
   <div class="book">
     <div class="sticky-form">
       <div class="sticky-card">
@@ -72,7 +69,6 @@
         </div>
       </div>
     </div>
-
 
     </div>
   </div>

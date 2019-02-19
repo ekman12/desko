@@ -34,11 +34,11 @@ end
 puts 'Creating 50 listings'
 
 
-50.times do
+15.times do
     listing =Listing.new(
       title: "#{User.all.sample.name} Place",
       description: Faker::Books::Lovecraft.paragraph,
-      location: Faker::Address.city,
+      location: Faker::Address.full_address,
       workhours: ["9-5","8-4","10-6","10-4"].sample,
       kitchen: [true, false].sample,
       price: (10..40).to_a.sample,
@@ -51,7 +51,7 @@ end
 
 puts 'Creating 100 bookings'
 
-100.times do
+20.times do
   start_d = (1..15).to_a
   end_d = (15..31).to_a
     new_booking = Booking.new(

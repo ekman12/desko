@@ -1,6 +1,6 @@
 require 'faker'
 require 'open-uri'
-require 'pry-byebug'
+# require 'pry-byebug'
 require 'json'
 
 DESK_PHOTOS = [

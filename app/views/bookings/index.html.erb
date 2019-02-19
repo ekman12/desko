@@ -1,46 +1,50 @@
 <div class="wrapper-light-grey">
   <div class="card-container">
-    <div class="row">
-      <h2>My next Deskos</h2>
-      <div class="cards">
-      <% @bookings.where(user: current_user).each do |booking| %>
-        <div class="col-xs-12 col-sm-4 col-md-4">
-          <div class="card">
-          <%= link_to listing_path(booking.listing) do %>
-            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= cl_image_path(booking.listing.photo, width: 900, crop: :thumb) %>);">
-              <span class="card-category"><%= booking.listing.location %></span>
-              <div class="card-description">
-                <h2><%= booking.listing.title %></h2>
+    <!-- <div class="row"> -->
+      <div class="my_bookings">
+        <h2>My next Deskos</h2>
+        <div class="cards">
+        <% @bookings.where(user: current_user).each do |booking| %>
+          <div class="col-xs-12 col-sm-4 col-md-4">
+            <div class="card">
+            <%= link_to listing_path(booking.listing) do %>
+              <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= cl_image_path(booking.listing.photo, width: 900, crop: :thumb) %>);">
+                <span class="card-category"><%= booking.listing.location %></span>
+                <div class="card-description">
+                  <h2><%= booking.listing.title %></h2>
+                </div>
+              </div>
+            <% end %>
+              <div class="card-footer">
+                  <div class="wishlist-link">
+                    <a href="#"><i class="fa fa-heart"></i></a>
+                  </div>
+                  <p>
+                    Booking status
+                  <% if booking.approved == "confirmed"  %>
+                    <%= "Accepted" %>
+                    <% if booking.review.nil?  %>
+                      <%= link_to "New review", new_listing_booking_review_path(booking.listing, booking), class: "btn btn-primary btn-sm" %>
+                    <% else %>
+                      <%= link_to "View my review", listing_path(booking.listing) %>
+                    <% end %>
+                  <% else %>
+                    <%= booking.approved.titlecase %>
+                  <% end %>
+                  </p>
+                  <p> From: <%= booking.start_date %> To: <%= booking.end_date %></p>
               </div>
             </div>
-          <% end %>
-            <div class="card-footer">
-                <div class="wishlist-link">
-                  <a href="#"><i class="fa fa-heart"></i></a>
-                </div>
-                <p>
-                  Booking status
-                <% if booking.approved == "confirmed"  %>
-                  <%= "Accepted" %>
-                  <% if booking.review.nil?  %>
-                    <%= link_to "New review", new_listing_booking_review_path(booking.listing, booking), class: "btn btn-primary btn-sm" %>
-                  <% else %>
-                    <%= link_to "View my review", listing_path(booking.listing) %>
-                  <% end %>
-                <% else %>
-                  <%= booking.approved.titlecase %>
-                <% end %>
-                </p>
-                <p> From: <%= booking.start_date %> To: <%= booking.end_date %></p>
-            </div>
           </div>
+          <% end %>
         </div>
-        <% end %>
       </div>
-    </div>
-    <div class="row">
-      <h2>Requests for my listings</h2>
+    <!-- </div> -->
+<!--     <div class="row">
+ -->
 
+ <div class="my_bookings">
+    <h2>Requests for my listings</h2>
         <div class="cards">
         <% @listings.where(user: current_user).each do |listing| %>
           <div class="col-xs-12 col-sm-6 col-md-4">
@@ -71,6 +75,9 @@
           </div>
         <% end %>
       </div>
-    </div>
-  </div>
+ </div>
+
+<!--     </div>
+ -->
+</div>
 </div>

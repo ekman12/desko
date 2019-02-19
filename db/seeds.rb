@@ -25,18 +25,18 @@ DESK_PHOTOS = [
 DESK_ADDRESSES = [
 'Greengate Street, Plaistow, London E13',
 'Boundaries Road, London SW12',
-'Hans Crescent, Knightsbridge, London SW1X',
+'Batoum Gardens, London W6',
 'Faversham Avenue, North Chingford, London E4',
-'Regent Terrace, Rita Road, London SW8',
+'Brunswick Quay, London SE16',
 'Hampton Street, London SE1',
 'Oswin Street, London SE11',
 'Roupell Street, London SE1',
 'Stretford Road, Hulme, Manchester M15',
 'Springdale Gardens, Manchester M20',
 'Scholes Lane, Prestwich, Manchester, Greater Manchester M25',
-'Chancel Avenue, Ordsall, Salford, Greater Manchester M5',
+'Talbot Road, Manchester M16',
 'Manchester Road, Droylsden, Manchester M43',
-'Boscombe Avenue, Eccles, Manchester M30',
+'Folly Lane, Swinton, Manchester M27',
 'Withington Road, Whalley Range, Manchester M16',
 'Lilac Avenue, Swinton, Manchester M27'
 ]

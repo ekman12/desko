@@ -26,14 +26,14 @@
                   <div class="wishlist-link">
                     <% wishlistclass = "wishlist-heart-clicked" if WishlistItem.where(listing_id: listing.id, user_id: current_user.id).any? %>
 
-
-
-
-
-
-                    <%= link_to(listing_wishlist_items_path(listing.id), method: :post) do %>
-                      <i class="fa fa-heart wishlist-heart <%= wishlistclass %>" id="wishlist-heart"></i>
+                    <%= link_to(listing_wishlist_items_path(listing.id), method: :post, remote: true) do %>
+                      <i class="fa fa-heart wishlist-heart <%= wishlistclass %>" data-listing-id="<%= listing.id %>"></i>
                     <% end %>
+
+
+
+
+
                   </div>
                 <% end %>
 

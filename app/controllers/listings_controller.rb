@@ -3,7 +3,18 @@ class ListingsController < ApplicationController
 
   def index
     if params[:query].present?
+      # raise
       @listing = Listing.search_by_location(params[:query])
+      @listing = Listing.near(params[:query], 20)
+      # raise
+      @listing_for_marker = @listing.where.not(latitude: nil, longitude: nil)
+      @markers = @listing_for_marker.map do |listing|
+      {
+        lng: listing.longitude,
+        lat: listing.latitude,
+        infoWindow: render_to_string(partial: "infowindow", locals: { listing: listing })
+      }
+    end
     else
     @listing = Listing.all
     @listing_for_marker = Listing.where.not(latitude: nil, longitude: nil)

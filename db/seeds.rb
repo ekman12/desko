@@ -1,4 +1,7 @@
 require 'faker'
+require 'open-uri'
+require 'pry-byebug'
+require 'json'
 
 DESK_PHOTOS = [
 'https://images.unsplash.com/photo-1526657782461-9fe13402a841?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
@@ -20,6 +23,25 @@ DESK_PHOTOS = [
 'https://images.unsplash.com/photo-1547586696-31bfb413bdf1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
 ]
 
+DESK_ADDRESSES = [
+'Greengate Street, Plaistow, London E13',
+'Boundaries Road, London SW12',
+'Hans Crescent, Knightsbridge, London SW1X',
+'Faversham Avenue, North Chingford, London E4',
+'Regent Terrace, Rita Road, London SW8',
+'Hampton Street, London SE1',
+'Oswin Street, London SE11',
+'Roupell Street, London SE1',
+'Stretford Road, Hulme, Manchester M15',
+'Springdale Gardens, Manchester M20',
+'Scholes Lane, Prestwich, Manchester, Greater Manchester M25',
+'Chancel Avenue, Ordsall, Salford, Greater Manchester M5',
+'Manchester Road, Droylsden, Manchester M43',
+'Boscombe Avenue, Eccles, Manchester M30',
+'Withington Road, Whalley Range, Manchester M16',
+'Lilac Avenue, Swinton, Manchester M27'
+]
+
 puts 'Creating 10 users'
 
 10.times do
@@ -31,20 +53,25 @@ puts 'Creating 10 users'
   user.save!
 end
 
-puts 'Creating 50 listings'
+puts 'Creating 16 listings'
 
 
-15.times do
+DESK_ADDRESSES.each do |a|
     listing =Listing.new(
       title: "#{User.all.sample.name} Place",
       description: Faker::Books::Lovecraft.paragraph,
-      location: Faker::Address.full_address,
+      location: a,
       workhours: ["9-5","8-4","10-6","10-4"].sample,
       kitchen: [true, false].sample,
       price: (10..40).to_a.sample,
       user: User.all.sample
       )
-  listing.remote_photo_url = DESK_PHOTOS.sample
+      listing.remote_photo_url = DESK_PHOTOS.sample
+      url = "https://api.mapbox.com/geocoding/v5/mapbox.places/#{a.gsub(" ","%20")}.json?access_token=pk.eyJ1IjoiY2Fpb2FiaWJlIiwiYSI6ImNqcnI3M2RlNzF3ZDM0YW4zZzlocGloY24ifQ.VxwFbGxDMfroaQ686rUbDg"
+      response_serialized = open(url).read
+      response = JSON.parse(response_serialized)
+      listing.latitude = response["features"][0]["geometry"]["coordinates"][0]
+      listing.longitude = response["features"][0]["geometry"]["coordinates"][1]
   listing.save!
 end
 

@@ -75,9 +75,9 @@ DESK_ADDRESSES.each do |a|
 end
 
 
-puts 'Creating 100 bookings'
+puts 'Creating 400 bookings'
 
-20.times do
+400.times do
   start_d = (1..15).to_a
   end_d = (15..31).to_a
     new_booking = Booking.new(
@@ -88,12 +88,12 @@ puts 'Creating 100 bookings'
       user: User.all.sample
       )
     new_booking.save!
-      if new_booking.approved == "confirmed"
-          review =Review.new(
-            booking: new_booking,
-            content: Faker::Restaurant.review,
-            rating: (0..5).to_a.sample,
-            )
-          review.save!
-      end
+  if new_booking.approved == "confirmed"
+      review =Review.new(
+        booking: new_booking,
+        content: Faker::Restaurant.review,
+        rating: (0..5).to_a.sample,
+        )
+      review.save!
+  end
 end
